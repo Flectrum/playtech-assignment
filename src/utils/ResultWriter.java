@@ -13,6 +13,7 @@ public class ResultWriter {
     public static void writeResultToFile(List<Player> players, Casino casino) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("src/result.txt"));
         players.sort(new PlayersComparator());
+        casino.getPlayersWithIllegalTransactions().sort(new PlayersWithIllegalTransactionsComparator());
         for (Player player : players) {
             writer.write(player.getId() + " " + player.getBalance() + " " + player.getWinRate());
             writer.newLine();
